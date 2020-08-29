@@ -1,5 +1,5 @@
 import React, {useCallback, useState} from "react";
-import { TextInput } from "../components/UIkit";
+import { TextInput, PrimaryButton } from "../components/UIkit";
 
 const SignUp = () => {
     const [username, setUsername] = useState(""),
@@ -67,6 +67,13 @@ const SignUp = () => {
                 type={"password"}
                 onChange={inputConfirmPassword}
             />
+            <div className="module-spacer--medium" />
+            <div className="center">
+                <PrimaryButton
+                    label={"Sign Up"}
+                    onClick={() => console.log('clicked')}
+                />
+            </div>
         </div>
     )
 };
