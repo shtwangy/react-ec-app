@@ -1,7 +1,11 @@
 import React, {useCallback, useState} from "react";
 import { TextInput, PrimaryButton } from "../components/UIkit";
+import { signUp } from "../reducks/users/operations";
+import {useDispatch} from "react-redux";
 
 const SignUp = () => {
+    const dispatch = useDispatch();
+
     const [username, setUsername] = useState(""),
           [email, setEmail] = useState(""),
           [password, setPassword] = useState(""),
@@ -71,7 +75,7 @@ const SignUp = () => {
             <div className="center">
                 <PrimaryButton
                     label={"Sign Up"}
-                    onClick={() => console.log('clicked')}
+                    onClick={() => dispatch(signUp(username, email, password, confirmPassword))}
                 />
             </div>
         </div>
