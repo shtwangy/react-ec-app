@@ -2,27 +2,34 @@ import { signInAction } from "./actions";
 import { push } from 'connected-react-router';
 import {auth, db, FirebaseTimestamp} from '../../firebase';
 
-export const signIn = () => {
-    return async (dispatch, getState) => {
-        const state = getState();
-        const isSinedIn = state.users.isSignedIn;
-
-        if (!isSinedIn) {
-            const url = 'https://api.github.com/users/shtwangy';
-
-            const response = await fetch(url)
-                .then(res => res.json())
-                .catch(() => null);
-
-            const username = response.login;
-
-            dispatch(signInAction({
-                isSinedIn: true,
-                uid: '00001',
-                username: username
-            }));
-            dispatch(push('/'));
+export const signIn = (email, password) => {
+    return async (dispatch) => {
+        // validation TODO: メソッド化する
+        if (email === '' || password === '') {
+            alert('必須項目が未入力です');
+            return false;
         }
+
+        auth.signInWithEmailAndPassword(email, password)
+            .then(result => {
+                const user = result.user;
+                if (user) {
+                    const uid = user.uid;
+                    db.collection('users').doc(uid).get()
+                        .then( snapshot => {
+                            const data = snapshot.data();
+                            dispatch(signInAction({
+                                isSignedIn: true,
+                                role: data.role,
+                                uid: uid,
+                                username: data.username
+                            }));
+
+                            dispatch(push('/'));
+                        })
+                }
+            });
+
     };
 };
 
