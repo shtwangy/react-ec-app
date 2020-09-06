@@ -25,6 +25,23 @@ export const listenAuthState = () => {
     }
 };
 
+export const resetPassword = (email, newPassword) => {
+    return async (dispatch) => {
+        // validation TODO: メソッド化する
+        if (email === '') {
+            alert('必須項目が未入力です');
+            return false;
+        } else {
+            auth.sendPasswordResetEmail(email).then(() => {
+                alert('入力されたアドレスにパスワードリセット用のメールを送りました。');
+                dispatch(push('/'));
+            }).catch(() => {
+                alert('パスワードリセットに失敗しました。');
+            });
+        }
+    }
+};
+
 export const signIn = (email, password) => {
     return async (dispatch) => {
         // validation TODO: メソッド化する
