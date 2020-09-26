@@ -32,6 +32,10 @@ const useStyles = makeStyles((theme) => ({
             paddingBottom: 16
         }
     },
+    icon: {
+        marginRight: 0,
+        marginLeft: 'auto'
+    },
     media: {
         height: 0,
         paddingTop: '100%'
@@ -75,7 +79,7 @@ const ProductCard = (props) => {
                         ¥{price}
                     </Typography>
                 </div>
-                <IconButton onClick={handleClick}>
+                <IconButton className={classes.icon} onClick={handleClick}>
                     <MoreVertIcon />
                 </IconButton>
                 <Menu
