@@ -1,7 +1,7 @@
 import React from "react"
 import { getUserId, getUsername } from "../reducks/users/selectors";
 import { useDispatch, useSelector } from "react-redux";
-import { singOut } from "../reducks/users/operations";
+import { signOut } from "../reducks/users/operations";
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -13,7 +13,7 @@ const Home = () => {
             <h2>Home</h2>
             <p>ID: {uid}</p>
             <p>NAME: {username}</p>
-            <button onClick={ () => dispatch(singOut()) }>SIGN OUT</button>
+            <button onClick={ () => dispatch(signOut()) }>SIGN OUT</button>
         </div>
     );
 };

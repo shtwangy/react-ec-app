@@ -110,7 +110,7 @@ export const signUp = (username, email, password, confirmPassword) => {
     };
 };
 
-export const singOut = () => {
+export const signOut = () => {
     return async (dispatch) => {
         auth.signOut().then(() => {
             dispatch(signOutAction());
