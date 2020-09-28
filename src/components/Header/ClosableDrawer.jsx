@@ -55,7 +55,7 @@ const ClosableDrawer = (props) => {
             label: '商品登録',
             icon: <AddCircleIcon />,
             id: 'register',
-            value: 'product/edit'
+            value: '/product/edit'
         },
         {
             func: selectMenu,
@@ -84,7 +84,10 @@ const ClosableDrawer = (props) => {
                 classes={{paper: classes.drawerPaper}}
                 ModalProps={{keepMounted: true}}
             >
-                <div>
+                <div
+                    onClose={e => props.onClose(e)}
+                    onKeyDown={e => props.onClose(e)}
+                >
                     <div className={classes.searchField}>
                         <TextInput
                             fullWidth={false}
