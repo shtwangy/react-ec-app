@@ -28,11 +28,17 @@ const useStyles = makeStyles({
 const CartListItem = (props) => {
     const classes = useStyles();
     const selector = useSelector(state => state);
+    const uid = getUserId(selector);
 
     const image = props.product.images[0].path;
     const price = props.product.price.toLocaleString();
     const name = props.product.name;
     const size = props.product.size;
+
+    const removeProductFromCart = (id) => {
+        return db.collection('users').doc(uid)
+            .collection('cart').doc(id).delete();
+    };
     return (
         <>
             <ListItem className={classes.list}>
@@ -48,11 +54,11 @@ const CartListItem = (props) => {
                         primary={'¥' + price}
                     />
                 </div>
-                <IconButton>
-                    <DeleteIcon></DeleteIcon>
+                <IconButton onClick={() => removeProductFromCart(props.product.cartId)}>
+                    <DeleteIcon />
                 </IconButton>
             </ListItem>
-            
+            <Divider />
         </>
     );
 };
