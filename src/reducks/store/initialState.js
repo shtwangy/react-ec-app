@@ -7,7 +7,8 @@ const initialState = {
         role: "",
         uid: "",
         username: "",
-        cart: []
+        cart: [],
+        orders: []
     }
 };
 
