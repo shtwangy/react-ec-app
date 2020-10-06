@@ -78,7 +78,7 @@ const ProductEdit = () => {
                 });
                 setCategories(list);
             })
-    }, [categories]);
+    }, []);
 
     return (
         <section>
