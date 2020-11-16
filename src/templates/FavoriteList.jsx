@@ -2,7 +2,7 @@ import React, {useCallback} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {getFavoriteProducts} from "../reducks/users/selectors";
 import List from "@material-ui/core/List";
-import {CartListItem} from "../components/Products";
+import {FavoriteListItem} from "../components/Products";
 import {GreyButton} from "../components/UIkit";
 import {makeStyles} from "@material-ui/styles";
 import {push} from "connected-react-router";
@@ -32,7 +32,7 @@ const FavoriteList = () => {
             </h2>
             <List className={classes.root}>
                 {favoriteProducts.length > 0 && (
-                    favoriteProducts.map(product => <CartListItem key={product.favoriteId} product={product}/>)
+                    favoriteProducts.map(product => <FavoriteListItem key={product.favoriteId} product={product}/>)
                 )}
             </List>
             <div className='module-spacer--medium' />
