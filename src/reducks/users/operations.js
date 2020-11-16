@@ -1,4 +1,4 @@
-import { signInAction, signOutAction, fetchProductsInCartAction, fetchOrdersHistoryAction } from "./actions";
+import { signInAction, signOutAction, fetchProductsInCartAction, fetchOrdersHistoryAction, fetchFavoriteProductsAction } from "./actions";
 import { push } from 'connected-react-router';
 import { auth, db, FirebaseTimestamp } from '../../firebase';
 
@@ -37,6 +37,12 @@ export const fetchOrdersHistory = () => {
                 });
                 dispatch(fetchOrdersHistoryAction(list));
             })
+    };
+};
+
+export const fetchFavoriteProducts = (products) => {
+    return async (dispatch) => {
+        dispatch(fetchFavoriteProductsAction(products));
     };
 };
 
