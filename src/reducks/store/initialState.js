@@ -8,7 +8,8 @@ const initialState = {
         uid: "",
         username: "",
         cart: [],
-        orders: []
+        orders: [],
+        favorite: []
     }
 };
 
