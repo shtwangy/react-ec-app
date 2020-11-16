@@ -6,9 +6,10 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import {makeStyles} from "@material-ui/styles";
 import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
-import {useSelector} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 import {getUserId} from "../../reducks/users/selectors";
 import {db} from '../../firebase';
+import {push} from "connected-react-router";
 
 const useStyles = makeStyles({
     list: {
@@ -34,6 +35,7 @@ const FavoriteListItem = (props) => {
     const classes = useStyles();
     const selector = useSelector(state => state);
     const uid = getUserId(selector);
+    const dispatch = useDispatch();
 
     const image = props.product.images[0].path;
     const price = props.product.price.toLocaleString();
@@ -47,7 +49,7 @@ const FavoriteListItem = (props) => {
 
     return (
         <>
-            <ListItem className={classes.list}>
+            <ListItem className={classes.list} onClick={() => dispatch(push('/product/' + props.product.productId))}>
                 <ListItemAvatar>
                     <img className={classes.image} src={image} alt='商品画像' />
                 </ListItemAvatar>
