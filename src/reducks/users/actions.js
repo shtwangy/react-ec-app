@@ -39,3 +39,11 @@ export const fetchOrdersHistoryAction = (history) => {
         payload: history
     }
 };
+
+export const FETCH_FAVORITE_PRODUCTS = "FETCH_FAVORITE_PRODUCTS";
+export const fetchFavoriteProductsAction = (products) => {
+    return {
+        type: "FETCH_FAVORITE_PRODUCTS",
+        payload: products
+    }
+};
