@@ -3,6 +3,11 @@ import initialState from "../store/initialState";
 
 export const UsersReducer= (state = initialState.users, action) => {
     switch (action.type) {
+        case Actions.FETCH_FAVORITE_PRODUCTS:
+            return {
+                ...state,
+                favorite: [...action.payload]
+            }
         case Actions.FETCH_ORDERS_HISTORY:
             return {
                 ...state,
