@@ -30,7 +30,6 @@ const OrderHistory = () => {
         dispatch(fetchOrdersHistory());
     }, []);
 
-    console.log(orders);
     return (
         <section className='c-section-wrapin'>
             <List className={classes.orderList}>
