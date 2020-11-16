@@ -49,11 +49,11 @@ const FavoriteListItem = (props) => {
 
     return (
         <>
-            <ListItem className={classes.list} onClick={() => dispatch(push('/product/' + props.product.productId))}>
+            <ListItem className={classes.list}>
                 <ListItemAvatar>
                     <img className={classes.image} src={image} alt='商品画像' />
                 </ListItemAvatar>
-                <div className={classes.text}>
+                <div className={classes.text} onClick={() => dispatch(push('/product/' + props.product.productId))}>
                     <ListItemText
                         primary={name}
                         secondary={'サイズ：' + size}
